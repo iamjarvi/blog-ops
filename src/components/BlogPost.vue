@@ -17,7 +17,7 @@
     <div class="blog-photo">
       <img
         v-if="post.welcomeScreen"
-        :src="require(`../assets/blogPhotos/${post.photo}.jpg`)"
+        :src="require(`../assets/blogPhotos/${post.photo}.jpeg`)"
         alt=""
       />
       <img v-else :src="post.blogCoverPhoto" alt="" />

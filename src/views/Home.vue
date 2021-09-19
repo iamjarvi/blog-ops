@@ -43,7 +43,7 @@ export default {
         blogPost:
           "Articles with all things related to smashing down silos and improving processes in Development, Data, Design, and more. Register today to never miss a post!",
         welcomeScreen: true,
-        photo: "coding",
+        photo: "lightbulb-team-warm-lighting",
       },
       sampleBlogPost: [
         {
@@ -54,7 +54,7 @@ export default {
         {
           title: "This is also a Title!",
           blogHTML: "This is a filler blog post",
-          blogCoverPhoto: "beautiful-stories",
+          blogCoverPhoto: "coding-warm",
         },
       ],
     };
