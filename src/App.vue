@@ -31,6 +31,7 @@ export default {
         this.$store.dispatch("getCurrentUser", user);
       }
     });
+    this.$store.dispatch("getPost");
   },
   mounted() {},
   methods: {

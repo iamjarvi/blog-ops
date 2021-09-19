@@ -3,15 +3,19 @@
     <div class="blog-content">
       <div>
         <h2 v-if="post.welcomeScreen">{{ post.title }}</h2>
-        <h2 v-else>{{ post.title }}</h2>
+        <h2 v-else>{{ post.blogTitle }}</h2>
         <p v-if="post.welcomeScreen">{{ post.blogPost }}</p>
-        <p class="content-preview" v-else>{{ post.blogHTML }}</p>
-        <router-link class="link link-light" v-if="post.welcomeScreen" to="#"
-          >Login/Register<Arrow class="arrow arrow-light"
-        /></router-link>
-        <router-link class="link" v-else to="#"
-          >View the Post<Arrow class="arrow"
-        /></router-link>
+        <p class="content-preview" v-else v-html="post.blogHTML"></p>
+        <router-link class="link link-light" v-if="post.welcomeScreen" to="#">
+          Login/Register<Arrow class="arrow arrow-light" />
+        </router-link>
+        <router-link
+          class="link"
+          v-else
+          :to="{ name: 'ViewBlog', params: { blogid: this.post.blogID } }"
+        >
+          View The Post<Arrow class="arrow" />
+        </router-link>
       </div>
     </div>
     <div class="blog-photo">
@@ -30,7 +34,9 @@ import Arrow from "../assets/Icons/arrow-right-light.svg";
 export default {
   name: "blogPost",
   props: ["post"],
-  components: { Arrow },
+  components: {
+    Arrow,
+  },
   computed: {
     user() {
       return this.$store.state.user;
@@ -50,7 +56,6 @@ export default {
     max-height: 650px;
     flex-direction: row;
   }
-
   .blog-content {
     display: flex;
     flex-direction: column;
@@ -70,7 +75,6 @@ export default {
       @media (min-width: 700px) {
         padding: 0 24px;
       }
-
       h2 {
         font-size: 32px;
         font-weight: 300;
@@ -93,7 +97,6 @@ export default {
         overflow: hidden;
         text-overflow: ellipsis;
       }
-
       .link {
         display: inline-flex;
         align-items: center;
@@ -101,33 +104,28 @@ export default {
         padding-bottom: 4px;
         border-bottom: 1px solid transparent;
         transition: 0.5s ease-in all;
-
         &:hover {
           border-bottom-color: #303030;
         }
-
-        .link-light {
-          &:hover {
-            border-bottom-color: #fff;
-          }
+      }
+      .link-light {
+        &:hover {
+          border-bottom-color: #ffff;
         }
       }
     }
   }
-
   .blog-photo {
     order: 1;
     flex: 3;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
       0 2px 4px -1px rgba(0, 0, 0, 0.06);
-
     @media (min-width: 700px) {
       order: 2;
     }
-    @media (min-width: 700px) {
+    @media (min-width: 800px) {
       flex: 4;
     }
-
     img {
       display: block;
       width: 100%;
@@ -135,7 +133,6 @@ export default {
       object-fit: cover;
     }
   }
-
   &:nth-child(even) {
     .blog-content {
       order: 2;
@@ -145,7 +142,6 @@ export default {
     }
   }
 }
-
 .no-user:first-child {
   .blog-content {
     background-color: #303030;
