@@ -14,7 +14,7 @@ import EditBlog from "../views/EditBlog.vue";
 
 
 Vue.use(VueRouter);
-Register
+
 const routes = [
   {
     path: "/",
