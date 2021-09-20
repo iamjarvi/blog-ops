@@ -23,7 +23,7 @@
         </div>
         <div class="input">
           <label for="username">Username:</label>
-          <input type="text" id="username" v-model="userName" />
+          <input type="text" id="username" v-model="username" />
         </div>
         <div class="input">
           <label for="email">Email:</label>
@@ -76,9 +76,9 @@ export default {
         this.$store.commit("changeLastName", payload);
       },
     },
-    userName: {
+    username: {
       get() {
-        return this.$store.state.profileUserName;
+        return this.$store.state.profileUsername;
       },
       set(payload) {
         this.$store.commit("changeUsername", payload);
